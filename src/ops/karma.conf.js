@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Data Studio
  * Copyright (c) 2017 Callan Peter Milne
@@ -17,4 +16,13 @@
  */
 'use strict';
 
-require('../src/ops/process.js')('unit');
+module.exports = function (config) {
+  config.set({
+    browsers: ['PhantomJS'],
+    // browsers: ['PhantomJS', 'Chrome'],
+    frameworks: ['jasmine'],
+    files: [
+      '../app/modules/**/*-spec.js',
+    ],
+  });
+};

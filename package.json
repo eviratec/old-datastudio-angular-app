@@ -4,7 +4,7 @@
   "description": "Data Studio Angular App",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./bin/unit"
   },
   "bin": {
     "ds-build-app": "./bin/build",
@@ -20,12 +20,17 @@
     "angular-cookies": "1.6.4",
     "angular-material": "1.1.4",
     "angular-mocks": "1.6.4",
-    "babel": "^6.23.0",
-    "babel-polyfill": "^6.23.0",
-    "babel-preset-env": "^1.5.1",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-sourcemaps": "^2.6.0"
+    "babel": "6.23.0",
+    "babel-polyfill": "6.23.0",
+    "babel-preset-env": "1.5.1",
+    "gulp": "3.9.1",
+    "gulp-babel": "6.1.2",
+    "gulp-concat": "2.6.1",
+    "gulp-sourcemaps": "2.6.0",
+    "jasmine": "2.6.0",
+    "karma": "1.7.0",
+    "karma-chrome-launcher": "2.1.1",
+    "karma-jasmine": "1.1.0",
+    "karma-phantomjs-launcher": "1.0.4"
   }
 }

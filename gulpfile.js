@@ -24,6 +24,7 @@ const TASKS = [
   'default',
   'build',
   'dist',
+  'unit',
 ];
 
 /**

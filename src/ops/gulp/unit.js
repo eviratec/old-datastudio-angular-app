@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Data Studio
  * Copyright (c) 2017 Callan Peter Milne
@@ -17,4 +16,16 @@
  */
 'use strict';
 
-require('../src/ops/process.js')('unit');
+const path = require('path');
+const Server = require('karma').Server;
+
+module.exports = function (gulp) {
+
+  gulp.task('unit', function (done) {
+    new Server({
+      configFile: path.resolve(__dirname, '..', 'karma.conf.js'),
+      singleRun: true,
+    }, done).start();
+  });
+
+};

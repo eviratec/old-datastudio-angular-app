@@ -7,12 +7,10 @@
 ## Getting started
 
 1. Install [Vagrant](https://www.vagrantup.com/) by [HashiCorp](https://www.hashicorp.com/)
-2. Clone/checkout/download this repository
-3. Start the development VM with:
-```shell
-$ vagrant up
-```
-4. Direct your browser to `192.168.110.30`
+2. Clone/checkout/download this repository: `$ git clone https://github.com/data-studio/angular-app.git && cd angular-app`
+3. Start the development VM using [Vagrant](https://www.vagrantup.com/): `$ vagrant up`
+4. Add an entry for `ng.data-studio.localhost` in your `hosts` file: `$ echo "192.168.110.30	ng.data-studio.localhost" >> /etc/hosts`
+5. Direct your browser to `http://ng.data-studio.localhost`
 
 ## License
 
