@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Data Studio
  * Copyright (c) 2017 Callan Peter Milne
@@ -17,4 +16,19 @@
  */
 'use strict';
 
-require('../src/ops/process.js')('build');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+
+module.exports = function (gulp) {
+
+  gulp.task('dist', function () {
+    return gulp.src('src/app/**/*.es')
+      .pipe(sourcemaps.init())
+      .pipe(babel())
+      .pipe(concat('app.js'))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('dist'));
+  });
+
+};

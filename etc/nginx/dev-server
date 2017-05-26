@@ -1,0 +1,13 @@
+server {
+
+  listen localhost:8080;
+  listen 0.0.0.0:80;
+
+  root /vagrant/build;
+  index app.html;
+
+  location / {
+    try_files $uri /app.html;
+  }
+
+}

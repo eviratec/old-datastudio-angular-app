@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Data Studio
  * Copyright (c) 2017 Callan Peter Milne
@@ -17,4 +16,31 @@
  */
 'use strict';
 
-require('../src/ops/process.js')('build');
+const exec = require('child_process').exec;
+const path = require('path');
+const fs = require('fs');
+
+const PATH_TO_GULP_BIN = './node_modules/gulp/bin/gulp.js';
+const BIN_ENV_CWD = path.resolve(__dirname, '../../');
+
+module.exports = function (cmd) {
+
+  let opts;
+
+  if (!/^[a-z-._]+$/i.test(cmd)) {
+    return invalidGulpCommand(cmd);
+  }
+
+  opts = {
+    cwd: BIN_ENV_CWD
+  };
+
+  exec(`${PATH_TO_GULP_BIN} ${cmd}`, opts, (error, stdout, stderr) => {
+
+    if (error) {
+      return console.error(`exec error: ${error}`);
+    }
+
+  }).stdout.pipe(process.stdout);
+
+};
