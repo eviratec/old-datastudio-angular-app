@@ -22,13 +22,11 @@ const concat = require('gulp-concat');
 
 module.exports = function (gulp) {
 
-  gulp.task('dist', function () {
-    return gulp.src('src/app/**/*.es')
-      .pipe(sourcemaps.init())
-      .pipe(babel())
-      .pipe(concat('app.js'))
-      .pipe(sourcemaps.write('.'))
+  gulp.task('moveBuildToDist', function () {
+    return gulp.src('build/**/*')
       .pipe(gulp.dest('dist'));
   });
+
+  gulp.task('dist', [ 'build', 'moveBuildToDist' ]);
 
 };
