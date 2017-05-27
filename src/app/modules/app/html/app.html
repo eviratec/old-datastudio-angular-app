@@ -1,2 +1,11 @@
-<h1>{{ $app.test }}</h1>
-<p>A fewmany fabric</p>
+<md-toolbar>
+  <div class="md-toolbar-tools"
+    style="background-color: #ab0;">
+    <p>Data Studio</p>
+    <p>{{ $app.test }}</p>
+  </div>
+</md-toolbar>
+
+<md-content>
+  <div ui-view></div>
+</md-content>

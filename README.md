@@ -1,8 +1,10 @@
 # Data Studio Angular App
 
-[![Build Status](https://travis-ci.org/data-studio/angular-app.svg?branch=master)](https://travis-ci.org/data-studio/angular-app)
-[![Dependency Status](https://david-dm.org/data-studio/angular-app/status.svg)](https://david-dm.org/data-studio/angular-app)
-[![devDependency Status](https://david-dm.org/data-studio/angular-app/dev-status.svg)](https://david-dm.org/data-studio/angular-app#info=devDependencies)
+[![Build Status](https://travis-ci.org/data-studio/angular-app.svg?style=flat-square&branch=master)](https://travis-ci.org/data-studio/angular-app)
+[![Dependency Status](https://david-dm.org/data-studio/angular-app/status.svg?style=flat-square)](https://david-dm.org/data-studio/angular-app)
+[![devDependency Status](https://david-dm.org/data-studio/angular-app/dev-status.svg?style=flat-square)](https://david-dm.org/data-studio/angular-app#info=devDependencies)
+[![License](https://img.shields.io/badge/license-ISC-orange.svg?style=flat-square)](https://github.com/data-studio/angular-app/blob/master/LICENSE)
+
 
 ## Getting started
 

@@ -23,12 +23,17 @@ const concat = require('gulp-concat');
 module.exports = function (gulp) {
 
   gulp.task('csscompile', function () {
-    gulp.src('src/app/**/*.scss')
-      .pipe(sourcemaps.init())
+
+    let paths = [
+      'src/app/**/*.scss',
+      'node_modules/angular-material/angular-material.scss',
+    ];
+
+    gulp.src(paths)
       .pipe(sass())
       .pipe(concat('app.css'))
-      .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('build'));
+
   });
 
 };
