@@ -16,6 +16,7 @@
  */
 'use strict';
 
+const templateCache = require('gulp-angular-templatecache');
 const sourcemaps = require('gulp-sourcemaps');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
@@ -23,12 +24,49 @@ const concat = require('gulp-concat');
 module.exports = function (gulp) {
 
   gulp.task('jscompile', function () {
-    gulp.src('src/app/**/*.es')
+
+    let paths = [
+      'src/app/**/*/module.es',
+      'src/app/**/*.es',
+    ];
+
+    gulp.src(paths)
       .pipe(sourcemaps.init())
       .pipe(babel())
       .pipe(concat('app.js'))
       .pipe(sourcemaps.write('.'))
       .pipe(gulp.dest('build'));
+
+  });
+
+  gulp.task('tplcachecompile', function () {
+    return gulp.src('src/app/**/*/html/**/*.html')
+      .pipe(templateCache('templates.js', { module: 'angularApp' }))
+      .pipe(gulp.dest('build'));
+  });
+
+  gulp.task('vendorjscompile', function () {
+
+    let paths = [];
+    let deps = [
+      'angular',
+      'angular-animate',
+      'angular-aria',
+      'angular-cookies',
+      'angular-material',
+      'angular-messages',
+      'angular-ui-router',
+      'angular-environment-config',
+    ];
+
+    deps.forEach(vendorModule => {
+      paths.push(`node_modules/${vendorModule}/**/*${vendorModule}.js`);
+    });
+
+    gulp.src(paths)
+      .pipe(concat('vendor.js', {newLine: ';'}))
+      .pipe(gulp.dest('build'));
+
   });
 
 };
