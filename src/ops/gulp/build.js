@@ -17,5 +17,12 @@
 'use strict';
 
 module.exports = function (gulp) {
-  gulp.task('build', [ 'jscompile', 'csscompile' ]);
+
+  gulp.task('copystatic', function () {
+    gulp.src('src/static/**/*')
+      .pipe(gulp.dest('build'));
+  });
+
+  gulp.task('build', [ 'vendorjscompile', 'tplcachecompile', 'jscompile', 'csscompile', 'copystatic' ]);
+
 };

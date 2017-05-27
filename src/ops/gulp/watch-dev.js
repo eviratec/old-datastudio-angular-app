@@ -16,39 +16,12 @@
  */
 'use strict';
 
-/**
- * Gulp Task URI Prefix
- * @const {Array}
- */
-const TASKS = [
-  'default',
-  'build',
-  'dist',
-  'unit',
-  'csscompile',
-  'jscompile',
-  'watch-dev',
-];
+module.exports = function (gulp) {
 
-/**
- * Gulp Task URI Prefix
- * @const {String}
- */
-const TASK_URI_PREFIX = './src/ops/gulp/';
+  gulp.task('watch-dev', function() {
+    gulp.watch(['src/app/**/*.es'], ['jscompile']);
+    gulp.watch(['src/app/**/*.scss'], ['csscompile']);
+    gulp.watch(['src/app/**/*.html'], ['tplcachecompile']);
+  });
 
-/**
- * Load Gulp Tasks
- */
-module.exports = (function loadGulpTasks (gulp, t) {
-  return t.map(taskName => require(taskUri(taskName))(gulp));
-})(require('gulp'), TASKS);
-
-/**
- * Gulp Task Source URI
- *
- * @param {String} taskName The task name
- * @returns {String} The task name with TASK_URI_PREFIX prefixed
- */
-function taskUri (taskName) {
-  return `${TASK_URI_PREFIX}${taskName}`;
-}
+};
