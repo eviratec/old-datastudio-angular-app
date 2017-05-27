@@ -71,20 +71,35 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
+
+    echo "=== INSTALLING NODE/NPM ==="
+    wget https://nodejs.org/dist/v7.10.0/node-v7.10.0-linux-x64.tar.xz -o wget.txt
+    tar -xf node-v7.10.0-linux-x64.tar.xz
+    mv node-v7.10.0-linux-x64 /usr/local/lib/node && cd $_
+    chmod 777 bin/*
+    ln -s /usr/local/lib/node/bin/* /usr/local/bin/
+
+    echo "=== INSTALLING UPDATES ==="
     apt-get update
     apt-get install --assume-yes nginx curl
+
+    echo "====== NGINX SET-UP ======"
     cp /vagrant/etc/nginx/dev-server /etc/nginx/sites-available/angular-app
     ln -s /etc/nginx/sites-available/angular-app /etc/nginx/sites-enabled/angular-app
     rm /etc/nginx/sites-enabled/default
     service nginx restart
-    wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | NVM_DIR=/usr/local/nvm bash
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-    nvm install v7.8.0
+
+    echo "=== RESOLVING NPM DEPS ==="
     cd /vagrant
     npm install
     npm ln -s
-    ds-build-app
+
+    echo "===== RUNNING BUILD ====="
+    /usr/local/lib/node/bin/ds-build-app
+
+    echo "== STARTING DEV SERVER =="
+    nohup /usr/local/lib/node/bin/ds-dev-server &
+
+    cd ~
   SHELL
 end

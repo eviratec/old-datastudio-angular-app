@@ -1,13 +1,26 @@
 server {
 
-  listen localhost:8080;
-  listen 0.0.0.0:80;
+  listen 80;
+  server_name ng.data-studio.localhost;
 
   root /vagrant/build;
   index app.html;
 
+  sendfile off;
+  server_tokens off;
+
+  location app.js {
+    sendfile on;
+    try_files $uri /app.js;
+  }
+
+  location app.css {
+    sendfile on;
+    try_files $uri /app.css;
+  }
+
   location / {
-    try_files $uri /app.html;
+    try_files $uri /app.html$uri /app.html;
   }
 
 }
