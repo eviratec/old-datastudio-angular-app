@@ -5,6 +5,6 @@
   AppController.$inject = ['$scope'];
   function AppController (  $scope) {
 
-    this.test = 'var';
+    this.test = 'Meow';
 
   };

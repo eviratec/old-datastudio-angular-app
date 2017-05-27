@@ -4,7 +4,9 @@
   "description": "Data Studio Angular App",
   "main": "index.js",
   "scripts": {
-    "test": "./bin/unit"
+    "test": "./bin/unit",
+    "prestart": "./bin/build",
+    "start": "./bin/start-dev-server"
   },
   "bin": {
     "ds-build-app": "./bin/build",

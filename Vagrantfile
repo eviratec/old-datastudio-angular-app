@@ -94,9 +94,6 @@ Vagrant.configure("2") do |config|
     npm install
     npm ln -s
 
-    echo "===== RUNNING BUILD ====="
-    /usr/local/lib/node/bin/ds-build-app
-
     echo "== STARTING DEV SERVER =="
     nohup /usr/local/lib/node/bin/ds-dev-server &
 
