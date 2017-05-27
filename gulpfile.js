@@ -25,6 +25,8 @@ const TASKS = [
   'build',
   'dist',
   'unit',
+  'csscompile',
+  'jscompile',
 ];
 
 /**

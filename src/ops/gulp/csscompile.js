@@ -16,6 +16,19 @@
  */
 'use strict';
 
+const sourcemaps = require('gulp-sourcemaps');
+const sass = require('gulp-sass');
+const concat = require('gulp-concat');
+
 module.exports = function (gulp) {
-  gulp.task('default', [ 'build' ]);
+
+  gulp.task('csscompile', function () {
+    gulp.src('src/app/**/*.scss')
+      .pipe(sourcemaps.init())
+      .pipe(sass())
+      .pipe(concat('app.css'))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest('build'));
+  });
+
 };
