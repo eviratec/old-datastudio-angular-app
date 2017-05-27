@@ -5,10 +5,10 @@
       $stateProvider
 
         .state('app', {
-          url: '^',
           templateUrl: 'modules/app/html/app.html',
           controller: 'AppController',
           controllerAs: '$app',
+          abstract: true,
         });
 
   }]);

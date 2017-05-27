@@ -1,26 +1,25 @@
 server {
 
-  listen 80;
+  listen 80 default deferred;
   server_name ng.data-studio.localhost;
 
-  root /vagrant/build;
-  index app.html;
+  root /vagrant/build/;
+
+  index index.html;
 
   sendfile off;
   server_tokens off;
 
-  location app.js {
-    sendfile on;
-    try_files $uri /app.js;
-  }
-
-  location app.css {
-    sendfile on;
-    try_files $uri /app.css;
-  }
-
   location / {
-    try_files $uri /app.html$uri /app.html;
+    try_files $uri $uri/ /index.html;
+  }
+
+  location ~ \.(js|css|ico)$ {
+    gzip_static on;
+    gzip_types text/plain text/xml text/css
+      text/comma-separated-values
+      text/javascript application/x-javascript
+      application/atom+xml;
   }
 
 }

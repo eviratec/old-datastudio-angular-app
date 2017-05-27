@@ -1,11 +1,17 @@
 <md-toolbar>
   <div class="md-toolbar-tools"
-    style="background-color: #424242;">
-    <p>Data Studio</p>
-    <p>{{ $app.test }}</p>
+    style="background-color: #212121;">
+    <p style="color: rgba(255,255,255,0.5);">Data Studio</p>
+    <p>
+      <em>
+        <strong>
+          {{ $app.test }}
+        </strong>
+      </em>
+    </p>
   </div>
 </md-toolbar>
 
-<md-content>
+<md-content layout-padding>
   <div ui-view></div>
 </md-content>

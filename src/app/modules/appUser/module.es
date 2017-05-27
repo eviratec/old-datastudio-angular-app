@@ -1,5 +1,5 @@
 
-  angular.module('angularApp', [
+  angular.module('appUser', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -7,5 +7,4 @@
     'ngMessages',
     'ui.router',
     'luminous.environment',
-    'appUser',
   ]);
