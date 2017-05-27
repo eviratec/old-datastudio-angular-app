@@ -26,10 +26,14 @@ module.exports = function (gulp) {
   gulp.task('jscompile', function () {
 
     let paths = [
-      'src/app/**/*/module.es',
-      'src/app/**/*.es',
       'src/app/modules/app/module.es',
-      'src/app/modules/app/**/*.es',
+      'src/app/modules/*/module.es',
+      'src/app/modules/app/config.es',
+      'src/app/modules/*/config.es',
+      'src/app/modules/app/routes.es',
+      'src/app/modules/*/routes.es',
+      'src/app/modules/app/*Controller.es',
+      'src/app/modules/*/*Controller.es',
     ];
 
     gulp.src(paths)

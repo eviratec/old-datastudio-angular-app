@@ -5,7 +5,7 @@
       $stateProvider
 
         .state('app.user', {
-          url: '/my',
+          url: '/',
           templateUrl: 'modules/appUser/html/appUser.html',
           controller: 'AppUserController',
           controllerAs: '$appUser',
